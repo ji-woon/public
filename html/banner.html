@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>banner</title>
+	<style>
+		*{margin:0;padding:0;}
+		ul{list-style:none;}
+		
+		.banner{border:1px solid #F00; width:180px; height:180px; position:relative; overflow:hidden; margin:0 auto;}
+		.banner ul li div{position:absolute; top:0; left:0;}
+		.banner ul li div img{width:100%;}
+		.banner ul li a{position:relative; z-index:1; border:1px solid #F00; display:block; width:20px; height:20px; float:right; clear:both; }	
+		.banner ul li:first-child+li{margin-top:30px;}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul>
+			<li>
+				<a href="">1</a>
+				<div><img src="image/cho.jpg" alt="" /></div>
+			</li>
+			<li>
+				<a href="">2</a>
+				<div><img src="image/cho.jpg" alt="" /></div>
+			</li>
+			<li>
+				<a href="">3</a>
+				<div><img src="image/cho.jpg" alt="" /></div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

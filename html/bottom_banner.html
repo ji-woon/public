@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>bottom_banner</title>
+	<style>
+		*{margin:0; padding:0;}
+		ul{list-style:none;}
+		
+		.banner{border:1px solid #F00; height:430px; overflow:hidden; text-align:center;}
+		.banner li.on div{display:block;}
+		.banner li div{width:100%; border:1px solid #F00; position:absolute; top:0; display:none; left:0;} 
+		.banner li{display:inline-block;}
+		.banner a{position:relative; z-index:1;border:1px solid #F00; display:block; width:20px; height:20px; top:400px;}
+	/* 포지션 좌표 뜨지 않는다. 변화가 없는데 부모가 될수 있다. top left가 먹는다. */
+		.banner ul li:nth-child(1) div{background:#D0D0CE;}
+		.banner ul li:nth-child(2) div{background:#008000;}
+		.banner ul li:nth-child(3) div{background:#333333;}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul>
+			<li class="on">
+				<a href="">1</a>
+				<div><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg" alt="" /></div>
+			</li>
+			<li>
+				<a href="">2</a>
+				<div><img src="http://www.leebyunghun.kr/html/images/main/add_img02.jpg" alt="" /></div>
+			</li>
+			<li>
+				<a href="">3</a>
+				<div><img src="http://www.leebyunghun.kr/html/images/main/add_img03.jpg" alt="" /></div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
