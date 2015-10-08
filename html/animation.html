@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+*{margin:0;padding:0}
+ul{list-style:none;}
+div{border:1px solid #F00; width:200px; margin:0 auto;}
+div>ul{border:1px solid #F00; margin:10px}
+div>ul>li{border-top:1px solid #F00; height:24px; line-height:24px;padding:0 10px;}
+div>ul>li:first-child{border:0;}
+div>ul>li>a{-webkit-transition:1.5s;
+	transition:10s;}
+div>ul>li>a:hover{display:block; margin-left:10px; color:#F00; transform:rotate(180deg);}
+
+p{color:#F00;}
+p:target{color:#CCC;}
+	</style>
+</head>
+<body>
+	<a href="#aa">text</a>
+	<p id="aa">text</p>
+	<div>
+			<ul>
+				<li><a href="#firstMenu">text</a>
+				<!-- 	<div id="firstMenu">
+						<ul>
+							<li><a href="">text</a></li>
+							<li><a href="">text</a></li>
+							<li><a href="">text</a></li>
+							<li><a href="">text</a></li>
+							<li><a href="">text</a></li>
+						</ul>
+					</div> --></li>
+				<li><a href="#">text</a></li>
+				<li><a href="#">text</a></li>
+				<li><a href="#">text</a></li>
+				<li><a href="#">text</a></li>
+			</ul>
+		</div>	
+</body>
+</html>
