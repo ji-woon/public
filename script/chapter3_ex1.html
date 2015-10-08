@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var userName=["장기하","원빈","정우성","이정재"];
+		var attr1=["처음에는","두번째에는","세번째는","네번째는","다섯번째는"];
+		var attr2=["개념","외모","성질","피"];
+		var attr3=["한숱깔","두숱깔","세숱깔","네숱깔","다섯숱가락"];
+
+		var ranData=Math.random()*userName.length
+		var compleData=Math.floor(ranData);
+		document.write("신이 당신을 만들때...<br/>");
+		document.write("어디보자 "+userName[compleData]+" 만들어볼까?<br/>");
+
+		ranData=Math.random()*attr1.length;
+		var ranData2=Math.random()*attr2.length;
+		var ranData3=Math.random()*attr3.length;
+
+		compleData=Math.floor(ranData);
+		var compleData2=Math.floor(ranData2);
+		var compleData3=Math.floor(ranData3);
+		console.log(compleData);
+
+		document.write(attr1[compleData] + attr2[compleData2] + attr3[compleData3]);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
