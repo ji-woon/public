@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// var question = ["나의 사랑 방식 타입 알아보기","두사람 이상을 동시에 좋아한 적이 있다",'연상 보다는 연하의 남성이 좋다','좋아하는 사람이 있으면 먼저 고백한다.','부모님과 같은 부부가 이상적이라고 생각한다.'];
+		// var location = [[4,2],]
+		var start = confirm("게임을 시작하시겠습니까?");
+		console.log(start);
+		var userName=null;
+
+		//최초 게임시작 기능 
+		function intro(){
+		alert("시작하자");
+		    userName=prompt('이름을 입력하세요');
+
+		    var msg="";
+		    msg += '방갑네' +userName+ '수업이 힘들지<br/>';
+		    msg += '그래서 준비한 게임이 있다네 <br/>';
+		    msg += '이름하야 말장난 게임이라네..';
+		    document.write( msg  );	
+		    search();
+			console.log(userName);
+
+		}
+
+		function search(){
+			var checked = confirm("자네 지금 배가 고픈가?");
+
+			if(checked){
+				alert("조금만 참게 곧 점심시간이네..")
+			}else if(!checked){
+				alert("그럼 더 공부할래?")
+			}
+		}
+		if(start){
+		 	intro();
+
+		}else{
+			document.write("안녕히 가세요");
+		}
+
+
+
+	</script>
+</body>
+</html>
