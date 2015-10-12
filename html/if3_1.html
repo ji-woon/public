@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var userName=prompt("이름을 넣으세요 ");
+		var score=prompt("평가 받을 점수를 입력하세요");
+		var msg = "";
+
+
+		// if(score<=100 && score>=90){
+		// 	alert("수");
+		// }else if(score<90 && score>=80){
+		// 	alert("우");
+		// }else if(score<80 && score>=70){
+		// 	alert("미");
+		// }else if(score<70 && score>=60){
+		// 	alert("양");
+		// }else{
+		// 	alert("가");
+		// }
+		println();
+
+		function levCheck(cs){
+			if(cs<=100 && cs>=80){
+				msg += "수 잘했습니다." ;
+			}else if(cs<80 && cs>=60){
+				msg += "우 조그만 더 노력하세요";
+			}else if(cs<60 && cs>=40){
+				msg += "미 중간이네요...";
+			}else if(cs<40 && cs>=20){
+				msg += "양 한참 노력이 필요하네요";
+			}else if(cs>20 && cs>=0){
+				msg += "가 으악... 지옥이네요";
+			}else{
+				msg += "잘못된 값입니다." ;
+			}
+
+		}
+
+		function println(){
+			var text = "";
+			text += userName +"의 점수는 ";
+			text += score +'입니다. '+;
+			text += '등급은' + msg +'입니다.'; 
+
+			document.write(text);
+		}
+	</script>
+	
+</body>
+</html>

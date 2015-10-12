@@ -10,15 +10,13 @@
 		var jumsu=prompt("성적 확인할 점수를 입력하세요");
 		
 
-
-
 		
 		say(jumsu);
 
 		function say(you){
 		
 
-			alert(userName+'의 점수는: '+jumsu+'점 이고' +' '+'등급은 : '+stair(jumsu)+'이고 하고 싶은 말은 :'+wordi(jumsu));	  
+			alert(userName+'의 점수는: '+jumsu+'점 이고' +' '+'등급은 : '+stair(jumsu));	  
 
 			}
 
@@ -27,32 +25,19 @@
 		function stair(jum){
 
 			if(jum >=90 && jum <=100){
-				return "수";
+				return "수 잘했습니다.";
 			}else if(jum >=80 && jum <90 ){
-				return "우";
+				return "우 더 열심히 하세요";
 			}else if(jum >=70 && jum <80){
-				return "미";
+				return "미 노력하세요";
 			}else if(jum >=60 && jum <70){
-				return "양";
+				return "양 공부좀 해야겠네요";
 			}else{
-				return "가";
+				return "가 최악이군요";
 			}
 
 		}
 
-		function wordi(su){
-			if(su >=90 && su <=100){
-				return "잘했습니다.";
-			}else if(su >=80 && su <90 ){
-				return "더 열심히 하세요";
-			}else if(su >=70 && su <80){
-				return "노력하세요";
-			}else if(su >=60 && su <70){
-				return "공부좀 해야겠네요";
-			}else{
-				return "최악이군요";
-			}
-		}
 	</script>
 </body>
 </html>
