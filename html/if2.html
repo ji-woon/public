@@ -30,11 +30,32 @@
 		function search(){
 			var checked = confirm("자네 지금 배가 고픈가?");
 
-			if(checked){
-				alert("조금만 참게 곧 점심시간이네..")
-			}else if(!checked){
-				alert("그럼 더 공부할래?")
+			menuCheck(checked)
+			// if(checked){
+			// 	alert("조금만 참게 곧 점심시간이네..")
+			// }else if(!checked){
+			// 	alert("그럼 더 공부할래?")
+			// }
+		}
+
+		function menuCheck(chk){
+
+				if(chk){
+				alert("조금만 참게 곧 점심시간이네..");
+
+				var menuList = ['아메리카노','카페라떼','카라멜마키야또','초코쉐이크','빅맥','와퍼','kfc치킨','맥주','막걸리','아이스크림'];
+				var ranNum=randoms(menuList.length)
+
+				document.write('<br/>'+userName+' '+menuList[ranNum]+'<br/> 이거 먹어볼래?');
+			}else if(!chk){
+				alert("그럼 더 공부할래?");
 			}
+
+
+		}
+
+		function randoms(len){
+			return Math.floor(Math.random()*len);
 		}
 		if(start){
 		 	intro();
