@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		var scoreTable = {
+			msg:"",
+			init:function(){
+				var userName = prompt("이름을 입력하세요 ");
+				var score=prompt("점수를 입력하세요");
+				// this.calculrator(score);
+
+				var text=""
+				text += userName +"님의 점수는<br/>"
+				text += score +"입니다..<br/>"
+				text += "등급 : "+this.calculrator(score)+"<br/>"
+				text += this.msg;
+				document.write(text);
+			},
+			calculrator:function(cs){
+				if(cs<=100 && cs>=80){
+				this.msg = "잘했습니다." ;
+				return "수";
+				}else if(cs<80 && cs>=60){
+					this.msg = "우 조그만 더 노력하세요";
+					return "우";
+				}else if(cs<60 && cs>=40){
+					this.msg = "미 중간이네요...";
+					return "미";
+				}else if(cs<40 && cs>=20){
+					this.msg = "양 한참 노력이 필요하네요";
+					return "양";
+				}else if(cs>20 && cs>=0){
+					this.msg = "가 으악... 지옥이네요";
+					return "가";
+				}else{
+					this.msg = "잘못된 값입니다." ;
+				}
+			}
+		}
+
+		scoreTable.init();
+	
+	</script>
+	
+</body>
+</html>

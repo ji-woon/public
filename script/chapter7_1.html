@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script>
+	 $(document).ready(function(){
+		 var foodTable = {
+             userPeople : [],
+             foodPeople : [],
+             pricePeople : [],
+            addUser:function(){
+			var userName = prompt("이름을 입력하세요");
+			var foodName = prompt("먹고 싶은 음식을 입력하세요");
+			var price =prompt("가격을 입력하세요");
+			 this.userPeople.push(userName);
+			 this.foodPeople.push(foodName);
+			 this.pricePeople.push(price);
+			},
+			printTable:function(){
+				var ranPeople = randoms(this.userPeople.length);
+				// var ranFood = randoms(this.userPeople.length);
+
+			function randoms(cs){
+					return Math.floor(Math.random()*cs);
+				}
+				// console.log(this.userPeople[ranPeople]);
+				// console.log(this.foodPeople[ranFood]);
+
+				var tagTable ="";
+				tagTable += "<table>"
+				tagTable += "<tr>"
+				tagTable +="<td>"+this.userPeople[ranPeople]+"</td>"
+				tagTable += "</tr>"
+				tagTable += "<tr>"
+				tagTable +="<td>"+this.foodPeople[ranPeople]+"</td>"
+				tagTable += "</tr>"
+				// tagTable += "<tr>"
+				// for(i in this.foodPeople){
+				// 	tagTable +="<td>"+this.foodPeople[ranFood]+"</td>"
+				// }
+				tagTable += "</tr>"
+				tagTable += "</table>"
+				$('.table').html(tagTable);
+			},
+			avg:function(){
+				var avgs=0;
+				 avgs = Number(this.pricePeople[this.ranPeople]); 
+				 return avgs*this.userPeople.length;
+				}
+			
+
+		}
+		$('.ttable').click(function(){
+			foodTable.addUser();
+
+		})
+		$('.randoms').click(function(){
+			foodTable.printTable();
+		})
+		$('.average').click(function(){
+			$('.avgnum').text(foodTable.avg());
+		})
+	})
+	</script>
+</head>
+<body>
+	<p class="avgnum"></p>
+	<input type="button" value="총합" class="average" />
+	<input type="button" value="참가" class="ttable" />
+	<input type="button" value="랜덤 뽑기 버튼" class="randoms" />
+	<div class="table"></div>
+	
+
+	
+</body>
+</html>

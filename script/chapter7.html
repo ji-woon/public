@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script>
+	    $(document).ready(function(){
+	       //          var userPeopleArr = [];  //학생
+		    		// var userScoreArr= [];    //점수		    
+
+		    var scoreTable = {
+		    		 userPeopleArr:[],  //학생
+		    		 userScoreArr:[],    //점수
+		    	adduser:function(){
+			    	var userName=prompt("학생 입력을 입력하세요");
+					var userScore =prompt("점수를 입력하세요 ");
+					this.userPeopleArr.push(userName);
+					this.userScoreArr.push(userScore);
+		    	},
+		    	avg:function(){
+		    		console.log(this.userPeopleArr);
+		    		console.log(this.userScoreArr);
+		    			var avge = 0;
+		    		for(i in this.userPeopleArr){
+		    			console.log("arr값: "+this.userScoreArr[i])
+		    			avge +=Number(this.userScoreArr[i])
+		    			console.log("누적값 : "+ avge)
+
+		    		}
+		    			return avge/this.userPeopleArr.length;
+		    	},
+		    	printTable:function(){
+		    		var tableTag = ""
+		    		tableTag += "<table>";
+		    		tableTag += "<tr>"
+		    		for( i in this.userPeopleArr){
+		    			tableTag += "<td>"+this.userPeopleArr[i]+"</td>"
+		    			
+		    		}
+		    		tableTag += "</tr>"
+		    		tableTag +="<tr>"
+		    		for(i in this.userScoreArr){
+		    			tableTag += "<td>"+this.userScoreArr[i]+"</td>"
+		    		}
+		    		tableTag +="</tr>"
+		    		tableTag += "</table>";
+
+		    	 $('.table').html(tableTag);
+		    		
+		    	}
+		    }	
+
+
+			$('.addUser').click(function(){
+			  scoreTable.adduser();
+
+			})
+
+			$('.avgscore').click(function(){
+				if(scoreTable.avg() == null){
+					$('.avgnum').text("죄송")
+				}else{
+				$('.avgnum').text("평균점수 : "+scoreTable.avg());
+				}
+			})
+			$('.delete').click(function(){
+				scoreTable.userPeopleArr=[];
+				scoreTable.userScoreArr=[];
+			})
+				$('.ttable').click(function(){
+				scoreTable.printTable();
+			})
+		})
+	</script>
+</head>
+<body>
+
+	
+	<p class="avgnum"></p>
+	<input type="button" value="전원 점수 출력" class="ttable" />
+	<input type="button" value="학생 입력" class="addUser" />
+	<input type="button" value="자료 삭제" class="delete" />
+	<input type="button" value="평균값 출력" class="avgscore" />
+	<div class="table"></div>
+	
+</body>
+</html>
