@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>
+	<button class="aa">시작</button>
+	<script>
+		var upAndDown = {
+			init:function(){
+				var num =confirm('게임을 시작하겠습니까?');
+
+				if(num){
+
+					 var c_num=Math.floor(Math.random()*100);
+
+				}else{
+					alert("감사합니다. ");
+				}
+				this.input_num(c_num);
+			},
+			input_num:function(x){
+
+				var choice=5;
+
+				for(i=0;i<=choice;i++){
+					var y=prompt('100이하의 원하는 숫자를 넣어주세요..');
+
+					if(x>y){
+						alert('숫자를 높여보세요');
+					}else if(x<y){
+						alert('숫자를 낮춰 보세요');
+					}else if(x=y){
+						alert('정답입니다. ');
+						break;
+					}else{
+						alert("잘못된 입력 방식입니다. ");
+					}
+					if(i >=choice){
+						alert("입력 초과 입니다.. 다시 실행시켜주세요 ");
+					}
+
+				}
+
+
+
+			}
+		}
+
+		$('.aa').click(function(){
+			upAndDown.init();
+		})
+
+	</script>
+	
+</body>
+</html>
