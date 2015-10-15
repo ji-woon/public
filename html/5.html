@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+
+			$(window).resize(function(){
+				wingBanner();
+			})
+
+			$(window).trigger("resize");
+			$(window).scroll(function(){
+				var x=$(this).scrollTop();
+				$('wing').stop().animate({
+
+					top:x;
+				})
+
+				
+			})
+
+			var arry=[];
+
+
+			$('.wrap div').each(function(i,e){
+
+					console.log(i);
+					console.log(e);
+				arry.push($(e).offset().top);
+			})
+			$('.wing li').click(function(){
+				var idx=$(this).index();
+
+				$('body,html').animate({
+
+					scollTop:arry[idx]
+				})
+			})
+
+			
+			function wingBanner(){
+
+				 var wrapOffsetL=$('.wrap').offset().left;
+				 // console.log(wrapOffsetL);
+
+				 var wrapOffsetW=$('.wrap').width();
+				 // console.log(wrapOffsetW);
+
+				 $('.wing').css('left',wrapOffsetL+wrapOffsetW+10);
+
+
+			}
+		})
+
+	</script>
+	<style>
+		body,html{height:100%; background-color:#CCC;}
+		ul,li,ol{list-style:none;}
+		.wrap{height:100%; width:1000px; margin:0 auto;}
+		.wrap div{height:100%;border:1px solid #F00; background-color:#FFF;}
+		.wing{width:80px; height:150px; border:1px solid #F00; position:absolute; top:0; left:50%;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+	</div>
+	<div class="wing">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	
+</body>
+</html>
