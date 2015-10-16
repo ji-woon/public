@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0; padding: 0;}
+		html,body{height:100%; background-color:#CCC; }
+		.wrap{height:100%; width:1000px; margin:0 auto;}
+		.wrap div{height:100%; border:1px solid #F00;background-color:#FFF; }
+		.wing {width:80px; height:150px; border:1px solid #F00; position:absolute; top:0; left:50%;}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			 
+
+			// $(window).resize(function(){
+			// 	wingBanner();
+			// })
+
+			// $(window).scroll(function(){
+			// 	console.log('뒈');
+			// 	var sct = $(this).scrollTop(); //scrollTop 함수
+			// 	//$('.wing').css('top',sct); 
+			// 	$('.wing').stop().animate({
+			// 		top:sct
+			// 	})
+			// })
+			// $(window).trigger("resize");
+			
+			
+			// function wingBanner(){
+			// 	var wrapOffsetL = $('.wrap').offset().left;
+			// 	console.log(wrapOffsetL);
+
+			// 	var wrapOffsetW = $('.wrap').width();
+			// 	console.log(wrapOffsetW);
+
+			// 	var wingspot = wrapOffsetL+wrapOffsetW;
+			// 	$('.wing').css('left',wingspot+10);
+
+			// }
+
+			var spotSection = [];
+			// spotSection.push($('.wrap div:eq(0)').offset().top)
+			$('.wrap div').each(function(i,e){
+				// console.log(i);
+				// console.log(e);
+				spotSection.push($(e).offset().top);
+
+				// for(i=0;i<$('.wrapper div').size;i++){
+				// 	spotSection.push($('.wrapper div').eq(i).offset().top);
+				// }   each for문으로 변경 
+
+				//while 변경 
+				// var i=0;
+				// while(i<$('.wrapper div').size()){
+				// 	sporSection.push($('.wrapper div').eq(i).offset().top)
+				// i++;
+				// }
+			})
+			$('.wing li').click(function(){
+				var idx=$(this).index();
+
+				$('body','html').animate({
+					scrollTop:spotSection[idx]
+			})
+			})	
+			// console.log($('.wrap div:eq(0)').offset().top);
+			
+			function wingBanner(){
+				var wrapOffsetL = $('.wrap').offset().left;
+				console.log(wrapOffsetL);
+
+				var wrapOffsetW = $('.wrap').width();
+				console.log(wrapOffsetW);
+
+				var wrapspot= wrapOffsetL + wrapOffsetW;
+				$('.wing').css('left',wrapspot+10);
+			}
+			
+			$(window).resize(function(){
+				wingBanner();
+			})
+			$(window).trigger("resize");
+			$(window).scroll(function(){
+				console.log("퉤");
+				var cs=$(this).scrollTop();
+
+				// $('.wing').css('top',cs);
+				$('.wing').stop().animate({
+					top:cs
+				})
+			})
+
+		})
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>	
+	</div>
+	<div class="wing">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<style>
+	*{margin:0; padding:0;}
+	ul,li,ol{list-style:none;}
+	html,body{height:100%; background-color:#CCC;}
+	.wrap{height:100%; width:1000px; margin:0 auto;}
+	.wrap div{height:100%; background-color:#FFF; border:1px solid #F00;}
+	.wing{width:80px; height:150px; position:absolute; top:0; border:1px solid #F00;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+	</div>
+	<div class="wing">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<script>
+	   var pageSetting = {
+	   			init:function(){
+	   				var wrapOffsetL = $('.wrap').offset().left;
+	   				var wrapOffsetW = $('.wrap').width();
+
+	   				var sumwrap = wrapOffsetL+wrapOffsetW;
+
+	   				return sumwrap;
+	   			},
+	   			wing:function(){
+	   				$('.wing').css('left',this.init()+10);
+	   			},
+	   			wingAni:function(sct){
+	   				$('.wing').stop().animate({
+	   					top:sct
+	   				})
+	   			},
+	   			spot:function(){
+	   			  var arry=[];
+
+	   			  $('.wrap div').each(function(i,e){
+	   			  	arry.push($(e).offset().top);
+	   			  })
+
+	   			  $('.wing li').click(function(){
+	   			  	var idx=$(this).index();
+
+	   			  	$('body','html').animate({
+	   			  		scrollTop:arry[idx]
+	   			  	})
+	   			  })
+	   			},
+	   // 			spot:function(){
+				// 	   var arry=[];               //글로벌 빼 고 ... 
+				// 	$('.wrap div').each(function(i,e){
+				// 		arry.push($(e).offset().top); 
+				// 	})
+
+				// 	 $('.wing li').click(function(){
+				// 	 	var idx=$(this).index();   //document  클릭 했을때 따로
+
+				// 	 	$('body','html').animate({
+				// 	 		scrollTop:arry[idx]
+				// 	 	})
+				// 	 })
+				// },
+	   			eventWing:function(){
+	   				$(window).on({
+	   					resize:function(){
+	   						pageSetting.wing();
+	   					},
+						scroll:function(){
+						pageSetting.wingAni($(this).scrollTop());
+	   					}	   					
+	   				})
+	   			 $(window).trigger('resize');	
+	   			}
+	} 
+
+	$(window).load(function(){
+		pageSetting.spot();
+		pageSetting.eventWing();
+	})    
+	</script>
+</body>
+</html>
