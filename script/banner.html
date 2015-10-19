@@ -7,31 +7,85 @@
 	<style>
 	*{margin:0; padding:0;}
 	ul,li,ol{list-style:none;}
-	.slide{background:#000; width:308px; margin: 0 auto;}
-	.slide ul{border:1px solid #F00; width:268px; height:188px; overflow:hidden; position:relative; left:20px;}
-	.slide li{position:absolute; display:none; left:0;}
-	.slide li:first-child{display:block;}
+	.slide{background:#000; width:332px; margin: 0 auto; text-align: center;}
+	.slide .slider{border:1px solid #F00; width:292px; height:188px; overflow:hidden; position:relative; left:20px;}
+	.slide .slider_page{position:relative; margin-top:-40px;}
+	.slide .slider li{position:absolute; display:none; left:0;}
+	.slide .slider li:first-child{display:block;}
+	.slide .slider_page li{display:inline; position:relative;}
+	.slide .slider_page li a{display:inline-block; background:url("http://www.leebyunghun.kr/html/images/main/key_visual_num.png") no-repeat; width:20px; height:20px;}
 	</style>
 	<script>
 	 $(document).ready(function(){
-	 	var idx='0';
+	 	var idx=0;
 	 	$('.next').click(function(){
-	 		$('.slide li').eq(idx).stop().animate({
+
+	 		$('.slide .slider li').eq(idx).animate({
 	 			left:"-100%"
-	 		}).next().css({'display':'block','left':'100%'}).animate({
+
+	 		}).next().css({
+	 			'display':'block',
+	 			'left':'100%'
+	 		}).stop().animate({
 	 			left:'0'
+	 			
 	 		})
-	 		idx+=1;
+
+	 		idx += 1;
+
+	 		if(idx == $('.slide .slider li').size()){
+	 			idx =0;
+	 			$('.slide li').eq(idx).css('left','100%').stop().animate({
+	 				left:0
+	 			})
+	 		}
 	 	})
 
 	 	$('.prev').click(function(){
-	 		$('.slide li').eq(idx).stop().animate({
+	 		$('.slide .slider li').eq(idx).animate({
 	 			left:"100%"
-	 		}).next().css({'display':'block','left':'-100%'}).animate({
-	 			left:"0"
+	 		}).prev().css({
+	 			'display':'block',
+	 			'left':'-100%'
+	 		}).stop().animate({
+	 			'left':'0'
 	 		})
-	 		idx+=1;
+	 		 	idx -= 1;
+
+	 		 if(idx <0){
+	 		 	idx = $('.slide .slider li').size()-1;
+	 		 	$('.slide .slider li').eq(idx).css({'left':'-100%','display':'block'}).animate({
+	 		 		left:0
+	 		 	})
+
+	 		 }
+
 	 	})
+	$('.slider_page li').click(function(){
+			console.log($(this).length)
+          var aa=Math.floor(Math.random()*$('.slider_page li').length);  // 화면 무작위로 나온값  
+          console.log($('.slider_page li').length)
+          console.log(aa)
+          var cs=$(this).index();   //내가 선택한거.... 
+          console.log(cs)
+
+          if(aa<cs){
+          $('.slider li').eq(aa).animate({'left':'100%','display':'block'})
+          
+
+      	}else if(aa>cs){
+
+      	  $('slider li').eq(aa).animate({'left':'100%','display':'block'})
+      		
+      	}else{
+      		return false;
+      	}
+      		return false;
+
+	})
+
+
+	 
 	 })
 	</script>
 
@@ -40,14 +94,26 @@
 	<div class="slide">
 		<button class="next">다음</button>
 		<button class="prev">이전</button>
-		<ul>
-			<li><img src="../image/kim.jpg" alt="#" ></li>
-			<li><img src="../image/kim.jpg" alt="#" ></li>
-			<li><img src="../image/kim.jpg" alt="#" ></li>
-			<li><img src="../image/kim.jpg" alt="#" ></li>
-			<li><img src="../image/kim.jpg" alt="#" ></li>
-		</ul>
+		<div class="xyz">
+			<ul class="slider">
+				<li><img src="../image/lol1.jpg" alt="#" ></li>
+				<li><img src="../image/lol2.jpg" alt="#" ></li>
+				<li><img src="../image/lol3.jpg" alt="#" ></li>
+				<li><img src="../image/lol4.jpg" alt="#" ></li>
+				<li><img src="../image/lol5.jpg" alt="#" ></li>
+			</ul>
+
+			<ul class="slider_page">
+				<li><a href="#"></a></li>
+				<li><a href="#"></a></li>
+				<li><a href="#"></a></li>
+				<li><a href="#"></a></li>
+				<li><a href="#"></a></li>
+			</ul>
+
+		</div>
 	</div>
 	
 </body>
 </html>
+
