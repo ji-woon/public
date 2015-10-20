@@ -12,11 +12,42 @@
 	.slide .slider_page{position:relative; margin-top:-40px;}
 	.slide .slider li{position:absolute; display:none; left:0;}
 	.slide .slider li:first-child{display:block;}
-	.slide .slider_page li{display:inline; position:relative;}
-	.slide .slider_page li a{display:inline-block; background:url("http://www.leebyunghun.kr/html/images/main/key_visual_num.png") no-repeat; width:20px; height:20px;}
+	.controll {text-align: center;}
+	.controll .on{background:#F00;}
+	
 	</style>
 	<script>
+	 
+
+
+
+
 	 $(document).ready(function(){
+
+	 	function numOver(){
+	 		var idx=$('.slide li.on').index();
+	 		$('.controll button').eq(idx).addClass('on').siblings().removeClass('on');
+	 	}
+
+	 	 var ran=Math.floor(Math.random()*$('.slide li').length)	
+
+	 $('.slide li').eq(ran).addClass('on').css('display','block')  //on으로 하는거는 class에서 온을 지워준다. 
+
+      numOver()
+	 	// .hover(function(){
+	 			// 오버시 
+	 	// },function(){
+                 // 나갔을때 
+	 	// })
+
+	 	var inter = setInterval(function(){$('.next').trigger('click')},3000)
+
+	 	$('.slide ul').hover(function(){
+	 		clearInterval(inter)
+	 	},function(){
+	 	   inter = setInterval(function(){$('.next').trigger('click')},3000)
+	 	    console.log(inter) 
+	 	})
 	 	var idx=0;
 	 	$('.next').click(function(){
 
@@ -61,28 +92,7 @@
 	 		 }
 
 	 	})
-	$('.slider_page li').click(function(){
-			console.log($(this).length)
-          var aa=Math.floor(Math.random()*$('.slider_page li').length);  // 화면 무작위로 나온값  
-          console.log($('.slider_page li').length)
-          console.log(aa)
-          var cs=$(this).index();   //내가 선택한거.... 
-          console.log(cs)
 
-          if(aa<cs){
-          $('.slider li').eq(aa).animate({'left':'100%','display':'block'})
-          
-
-      	}else if(aa>cs){
-
-      	  $('slider li').eq(aa).animate({'left':'100%','display':'block'})
-      		
-      	}else{
-      		return false;
-      	}
-      		return false;
-
-	})
 
 
 	 
@@ -94,7 +104,7 @@
 	<div class="slide">
 		<button class="next">다음</button>
 		<button class="prev">이전</button>
-		<div class="xyz">
+		
 			<ul class="slider">
 				<li><img src="../image/lol1.jpg" alt="#" ></li>
 				<li><img src="../image/lol2.jpg" alt="#" ></li>
@@ -103,15 +113,16 @@
 				<li><img src="../image/lol5.jpg" alt="#" ></li>
 			</ul>
 
-			<ul class="slider_page">
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-			</ul>
-
-		</div>
+		
+	</div>
+	<div class="controll">
+		<ul>
+			<button class="on">1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button>
+			<button>5</button>
+		</ul>
 	</div>
 	
 </body>

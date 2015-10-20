@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<style>
+	*{margin:0; padding:0;}
+	ul,li,ol{list-style:none;}
+	.slide{background:#000; width:332px; margin: 0 auto; text-align: center;}
+	.slide ul{border:1px solid #F00; width:292px; height:188px; position:relative; left:20px;}
+	
+	.slide ul li{position:absolute; display:none; left:0;}
+	/*.slide ul li:first-child{display:block;}*/
+	.controll {text-align:center;}
+	.controll .on{background-color:#F00;}
+	
+	</style>
+	<script>
+	 $(document).ready(function(){
+	 		var ran=Math.floor(Math.random()*$('.slide li').length)
+	 	$('.slide li').eq(ran).addClass('on').css('display','block')
+
+	 	numOver();
+
+	 
+	 
+
+	 	var inter = setInterval(function(){$('.next').trigger('click')},3000)
+
+	 	$('.slide ul').hover(function(){
+	 		clearInterval(inter)
+	 	},function(){
+	 	   inter = setInterval(function(){$('.next').trigger('click')},3000)
+	 	    console.log(inter) 
+	 	})
+
+	 		function numOver(){
+	 		var idx=$('.slide li.on').index();
+	 		$('.controll button').eq(idx).addClass('on').siblings().removeClass('on');
+	 	}
+
+	 	
+	 	var itemwidth = $('.slide li').width()
+	 		$('.next').click(function(){
+	 			numOver();
+
+	 		
+	 			var itemwidth = $('.slide li').width()
+	 			$('.slide li.on').animate({
+	 				left:-itemwidth
+	 			}).removeClass('on').next().addClass('on').css({'display':'block','left':itemwidth}).animate({left:0})
+	 			 console.log($('.slide li.on').html())
+	 			
+	 			var itemHtml=$('.slide li.on').html();
+
+	 			if(itemHtml == undefined){
+
+	 				console.log("실행")
+	 				$('.slide li').first().addClass('on').css('left',itemwidth).animate({left:0})
+	 			}
+	 		})
+	 	$('.prev').click(function(){
+	 		var itemwidth2 = $('.slide li').width()
+	 		$('.slide li.on').animate({
+	 			 left:itemwidth2
+	 			}).removeClass('on').prev().addClass('on').css({'display':'block','left':-itemwidth}).animate({left:0})
+	 		// console.log($('.slide li.on').html())
+	 			var itemHtml2=$('.slide li.on').html();
+	 			console.log($('.slide li.on').html())
+	 			if(itemHtml2 == undefined){
+	 			$('.slide li')
+	 			.removeClass('on')
+	 			.last()
+	 			.addClass('on')
+	 			.css({'left':-itemwidth2,'display':'block'})
+	 			.animate({left:0})	 			
+	 			
+	 		}
+	 				
+	 			
+	 		})
+	 	})
+	</script>
+
+</head>
+<body>
+	<div class="slide">
+		<button class="next">다음</button>
+		<button class="prev">이전</button>
+		
+			<ul>
+				<li><img src="../image/lol1.jpg" alt="1" ></li>
+				<li><img src="../image/lol2.jpg" alt="2" ></li>
+				<li><img src="../image/lol3.jpg" alt="3" ></li>
+				<li><img src="../image/lol4.jpg" alt="4" ></li>
+				<li><img src="../image/lol5.jpg" alt="5" ></li>
+			</ul>
+
+		
+
+		
+	</div>
+	<div class="controll">
+		<ul>
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button>
+			<button>5</button>
+		</ul>
+	</div>
+	
+</body>
+</html>
+

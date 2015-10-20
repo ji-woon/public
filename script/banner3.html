@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		li,ol,ul{list-style:none;}
+		.slide{border: 1px solid #F00; width:332px; height:170px; margin:0 auto;}
+		.slide ul{border:1px solid #F00; width:292px; height:170px; position:relative; left:20px;}
+		.slide ul li{position:absolute; display:none;  left:0;}
+		
+	</style>
+	<script>
+	
+		$(function(){
+
+			var ran=Math.floor(Math.random()*$('.slide li').length)
+			$('.slide li').eq(ran).addClass('on').css('display','block');
+
+			var inter = setInterval(function(){
+				$('.slide .next').trigger('click')
+			},3000) 
+			
+
+			$('.slide ul').hover(function(){
+				clearInterval(inter)
+			},function(){ inter = setInterval(function(){
+				$('.slide .next').trigger('click')
+			},3000)
+
+			})
+
+			var itemwidth=$('.slide li').width();
+
+			$('.slide .next').click(function(){
+				$('.slide li.on').animate({
+	 				left:-itemwidth
+	 			}).removeClass('on').next().addClass('on').css({'left':itemwidth,'display':'block'}).animate({left:0})
+	 			console.log($('.slide li.on').html())
+
+	 			if($('.slide li.on').html() == undefined){
+	 				$('.slide li').removeClass().first().addClass('on').css({'left':itemwidth,'display':'block'}).animate({left:0})
+	 			}
+	 		
+			})
+			$('.slide .prev').click(function(){
+				$('.slide li.on').animate({
+					left:itemwidth
+				}).removeClass('on').prev().addClass('on').css({'left':-itemwidth,'display':'block'}).animate({left:0})
+				if($('.slide li.on').html() == undefined){
+					$('.slide li').removeClass('on').last().addClass('on').css('left',-itemwidth).animate({left:0})
+				}
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class="slide">
+		<button class="next">다음</button>
+		<button class="prev">이전</button>
+		<ul>
+			<li><img src="../image/lol1.jpg" alt="#"/></li>
+			<li><img src="../image/lol2.jpg" alt="#"/></li>
+			<li><img src="../image/lol3.jpg" alt="#"/></li>
+			<li><img src="../image/lol4.jpg" alt="#"/></li>
+			<li><img src="../image/lol5.jpg" alt="#"/></li>
+		</ul>
+	</div>
+	
+</body>
+</html>
