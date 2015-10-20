@@ -10,6 +10,8 @@
 		.slide{border: 1px solid #F00; width:332px; height:170px; margin:0 auto;}
 		.slide ul{border:1px solid #F00; width:292px; height:170px; position:relative; left:20px;}
 		.slide ul li{position:absolute; display:none;  left:0;}
+		.controll {text-align:center; position:relative; z-index:1;}
+		.controll .on{background-color: #F00;}
 		
 	</style>
 	<script>
@@ -23,7 +25,7 @@
 				$('.slide .next').trigger('click')
 			},3000) 
 			
-
+			numOver();
 			$('.slide ul').hover(function(){
 				clearInterval(inter)
 			},function(){ inter = setInterval(function(){
@@ -32,9 +34,17 @@
 
 			})
 
+			function numOver(){
+				var idx=$('.slide li.on').index()
+				$('.controll button').eq(idx).addClass('on').siblings().removeClass('on')
+			}
+
+
+
 			var itemwidth=$('.slide li').width();
 
 			$('.slide .next').click(function(){
+				
 				$('.slide li.on').animate({
 	 				left:-itemwidth
 	 			}).removeClass('on').next().addClass('on').css({'left':itemwidth,'display':'block'}).animate({left:0})
@@ -43,7 +53,7 @@
 	 			if($('.slide li.on').html() == undefined){
 	 				$('.slide li').removeClass().first().addClass('on').css({'left':itemwidth,'display':'block'}).animate({left:0})
 	 			}
-	 		
+	 		  numOver();
 			})
 			$('.slide .prev').click(function(){
 				$('.slide li.on').animate({
@@ -67,6 +77,13 @@
 			<li><img src="../image/lol4.jpg" alt="#"/></li>
 			<li><img src="../image/lol5.jpg" alt="#"/></li>
 		</ul>
+	</div>
+	<div class="controll">
+		<button>1</button>
+		<button>2</button>
+		<button>3</button>
+		<button>4</button>
+		<button>5</button>
 	</div>
 	
 </body>
