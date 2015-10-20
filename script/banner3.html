@@ -10,6 +10,7 @@
 		.slide{border: 1px solid #F00; width:332px; height:170px; margin:0 auto;}
 		.slide ul{border:1px solid #F00; width:292px; height:170px; position:relative; left:20px;}
 		.slide ul li{position:absolute; display:none;  left:0;}
+		.slide ul li.on{display:block}
 		.controll {text-align:center; position:relative; z-index:1;}
 		.controll .on{background-color: #F00;}
 		
@@ -19,7 +20,7 @@
 		$(function(){
 
 			var ran=Math.floor(Math.random()*$('.slide li').length)
-			$('.slide li').eq(ran).addClass('on').css('display','block');
+			$('.slide li').eq(ran).addClass('on');
 
 			var inter = setInterval(function(){
 				$('.slide .next').trigger('click')
@@ -47,20 +48,20 @@
 				
 				$('.slide li.on').animate({
 	 				left:-itemwidth
-	 			}).removeClass('on').next().addClass('on').css({'left':itemwidth,'display':'block'}).animate({left:0})
+	 			}).removeClass('on').next().addClass('on').css('left',itemwidth).animate({left:0})
 	 			console.log($('.slide li.on').html())
 
 	 			if($('.slide li.on').html() == undefined){
-	 				$('.slide li').removeClass().first().addClass('on').css({'left':itemwidth,'display':'block'}).animate({left:0})
+	 				$('.slide li').removeClass('on').first().addClass('on').css('left',itemwidth).stop().animate({left:0})
 	 			}
 	 		  numOver();
 			})
 			$('.slide .prev').click(function(){
 				$('.slide li.on').animate({
 					left:itemwidth
-				}).removeClass('on').prev().addClass('on').css({'left':-itemwidth,'display':'block'}).animate({left:0})
+				}).removeClass('on').prev().addClass('on').css('left',-itemwidth).stop().animate({left:0})
 				if($('.slide li.on').html() == undefined){
-					$('.slide li').removeClass('on').last().addClass('on').css('left',-itemwidth).animate({left:0})
+					$('.slide li').removeClass('on').last().addClass('on').css('left',-itemwidth).stop().animate({left:0})
 				}
 			})
 		})
