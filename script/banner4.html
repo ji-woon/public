@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		li,ol,ul{list-style:none;}
+		.slide{border: 1px solid #F00; width:332px; height:170px; margin:0 auto;}
+		.slide ul{border:1px solid #F00; width:292px; height:170px; position:relative; left:20px;}
+		.slide ul li{position:absolute; display:none;  left:0;}
+		.slide ul li.on{display:block}
+		.controll {text-align:center; position:relative; z-index:1;}
+		.controll .on{background-color: #F00;}
+		.slide li:first-child{display:block;}
+		
+	</style>
+	<script>
+	
+		$(function(){
+
+			var idx = 0;
+
+			function movement(start,end,index){
+					$('.slide li').eq(index)
+				.css({
+					'display':'block',
+					'left':start  //처음 위치  next에서 작업 했다.. 
+				}).animate({
+					left:end
+				})
+			}
+
+			
+
+			$('.next').click(function(){
+				movement('0','-100%',idx)
+				idx += 1;
+				movement('100%','0',idx)
+
+			})
+
+		})	
+	</script>
+</head>
+<body>
+	<div class="slide">
+		<button class="next">다음</button>
+		<button class="prev">이전</button>
+		<ul>
+			<li><img src="../image/lol1.jpg" alt="#"/></li>
+			<li><img src="../image/lol2.jpg" alt="#"/></li>
+			<li><img src="../image/lol3.jpg" alt="#"/></li>
+			<li><img src="../image/lol4.jpg" alt="#"/></li>
+			<li><img src="../image/lol5.jpg" alt="#"/></li>
+		</ul>
+	</div>
+	<div class="controll">
+		<button>1</button>
+		<button>2</button>
+		<button>3</button>
+		<button>4</button>
+		<button>5</button>
+	</div>
+	
+</body>
+</html>
