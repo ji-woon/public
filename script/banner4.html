@@ -30,6 +30,18 @@
 				}).animate({
 					left:end
 				})
+
+				if(index == $('.slide li').size()){
+					// alert('ㅄ');
+					idx = 0;
+
+					movement('100%','0',idx)
+				}else if(index <0 ){
+					// alert('ㅄ');
+					idx = $('.slide li').size()-1
+
+					movement('100%','0',idx)
+				}
 			}
 
 			
@@ -39,12 +51,7 @@
 				idx += 1;
 				movement('100%','0',idx)
 
-				if(idx == $('.slide li').size()){
-					// alert('ㅄ');
-					idx = 0;
-
-					movement('100%','0',idx)
-				}
+			
 
 			})
 
@@ -54,12 +61,6 @@
 				movement('-100%','0',idx)
 
 
-				if(idx <0 ){
-					// alert('ㅄ');
-					idx = $('.slide li').size()-1
-
-					movement('100%','0',idx)
-				}
 
 			})
 
