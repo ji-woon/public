@@ -51,14 +51,14 @@
 	   			spot:function(){
 	   			  var arry=[];
 
-	   			  $('.wrap div').each(function(i,e){
+	   			 $('.wrap div').each(function(i,e){
 	   			  	arry.push($(e).offset().top);
-	   			  })
+	   			 })
 
-	   			  $('.wing li').click(function(){
+	   			$('.wing li').click(function(){
 	   			  	var idx=$(this).index();
 
-	   			  	$('body','html').animate({
+	   			$('body','html').animate({
 	   			  		scrollTop:arry[idx]
 	   			  	})
 	   			  })
