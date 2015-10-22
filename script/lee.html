@@ -9,33 +9,80 @@
 		ul,li,ol{list-style:none;}
 		.wrap{border:1px solid #F00; height:430px; width:1100px; margin:0 auto; }
 		.wrap ul{border:1px solid #F00; height:430px; width:1100px; }
-		.wrap li{position:absolute; display:none;}
-		.wrap li.on{display:block;}
+		.wrap li{position:absolute;}
+		.wrap li img{display:none;}
+		.wrap li:first-child img{display:block;}
 		.controll{text-align:center; position:relative; top:-40px;}
 		button{height:20px; width:20px; text-indent:-9999px;}
+		button.on{background-color:#F00;}
 	</style>
-	<script>
-    $(document).ready(function(){
-	   
 
-		})
-	</script>
 </head>
 <body>
 	
 	<div class="wrap">
 		<ul>
-			<li><img src="../image/add_img01.jpg" alt="#"></li>
-			<li><img src="../image/add_img02.jpg" alt="#"></li>
-			<li><img src="../image/add_img03.jpg" alt="#"></li>			
+			<li class="on"><a href=""><img src="../image/add_img01.jpg" alt="#"></a></li>
+			<li><a href=""><img src="../image/add_img02.jpg" alt="#"></a></li>
+			<li><a href=""><img src="../image/add_img03.jpg" alt="#"></a></li>			
 		</ul>
 	</div>
 	<div class="controll">
-		<button class="first">1</button>
-		<button class="second">2</button>
-		<button class="third">3</button>
+		<button class="on">1</button>
+		<button>2</button>
+		<button>3</button>
 	</div>
-		
+	<script>
+
+			     var inter = setInterval(function(){moveX()},3000)
+			      
+			  
+			    
+	  			 var x=0;
+    			    	        
+	      		 $('.controll button').click(function(){
+	      		 	
+	       	      y =$(this).index();  
+	       	           	           
+	       		 $('.wrap li').eq(x).removeClass('on')
+	       	    $('.wrap li').eq(y).addClass('on').find('img').fadeIn(1000).parents('li').siblings().removeClass().find('img').fadeOut(1000);
+	       	    	
+   					 buttonColor();
+	      	 })
+
+	      		 var a=0;
+
+	      		function moveX(){  //index번호를 인자를 idx값으로 보낸다. 
+	      			
+	      		   
+
+	      		   $('.wrap li').eq(a).removeClass('on').next().addClass('on').find('img').fadeIn(1000).parents('li').siblings().removeClass('on').find('img').fadeOut(1000);
+
+	      		   a++;
+
+	      		
+	      		    console.log(a);
+
+	      		   if(a == $('.wrap li').length){
+	      		   	 
+	      		   	   a = 0;
+
+	      		   	$('.wrap li').eq(a).addClass('on').find('img').fadeIn(1000).parents('li').siblings().removeClass('on').find('img').fadeOut(1000)
+	      		   } 
+	      		 	
+ 					buttonColor();
+	      		}
+
+	      		function buttonColor(){
+	      			var idx=$('.wrap li.on').index();
+	      			console.log(idx)
+	      			$('.controll button').eq(idx).addClass('on').siblings().removeClass('on');
+
+	      		}
+             
+
+
+	</script>
 
 </body>
 </html>
