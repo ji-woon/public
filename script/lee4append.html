@@ -25,14 +25,26 @@
 	var bgcolor= ['#CFCFCD','#B7B9B8','#061823']
 
 	$(document).ready(function(){
-		$('.controll li').click(function(){
-			var idx = $(this).index();
-			
-			$('.view')
-			.append('<img src="'+imgUrl[idx]+'"alt=""/>')
-			.children('img')
-			.first()
-			.fadeOut().next().css('display','none').fadeIn(function(){$(this).siblings().remove()})
+		var check = true;
+		$('.controll li').click(function(e){   //e는 이벤트의 e
+
+			 console.log(e);
+
+			  e.preventDefault();  //클릭 이벤트가 실행이 안되게 막는
+
+
+		  	if(check){ 
+				check =false;
+				var idx = $(this).index();
+				
+				$('.view')
+				.append('<img src="'+imgUrl[idx]+'"alt=""/>')
+				.children('img')
+				.first()
+				.fadeOut().next().css('display','none').fadeIn(function(){$(this).siblings().remove();
+					check = true;
+				})
+			}
 		})
 	})
 
