@@ -8,20 +8,43 @@
 	*{margin:0; padding:0;}
 	li,ol,ul{list-style:none;}
 	.banner{border:1px solid #F00; position:relative; }
-	.view{background-color:#CFCFCD; text-align:center;}
-	.view img{}
+	.view{background-color:#CFCFCD; height:430px; }
+	.view img{position:absolute; left:50%; margin-left:-550px;}
 	.controll {text-align:center; width:100%; position:absolute; bottom:20px;}
 	.controll li{display:inline-block;}
+	.controll li.on{color:#F00;}
 
 	</style>
 	<script>
+	var imgUrl = [
+    'http://www.leebyunghun.kr/html/images/main/add_img01.jpg',
+    'http://www.leebyunghun.kr/html/images/main/add_img02.jpg',
+    'http://www.leebyunghun.kr/html/images/main/add_img03.jpg'
+]
+
+	var bgcolor= ['#CFCFCD','#B7B9B8','#061823']
+
+	$(document).ready(function(){
+		$('.controll li').click(function(){
+			var idx = $(this).index();
+			
+			$('.view')
+			.append('<img src="'+imgUrl[idx]+'"alt=""/>')
+			.children('img')
+			.first()
+			.fadeOut(function(){
+				$(this).remove()
+			}).next().css('display','none').fadeIn()
+		})
+	})
+
 	</script>
 </head>
 <body>
 	<div class='banner'>
-		<div class="view"><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg"></div>
+		<div class="view"><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg" alt=""/> </div>
 		<ul class="controll">
-			<li>1</li>
+			<li class="on">1</li>
 			<li>2</li>
 			<li>3</li>
 		</ul>
