@@ -19,11 +19,20 @@
 	<button class="pop2">팝업</button>
 	<button class="pop3">팝업</button>
 	<button class="pop4">팝업</button>
-	<div class="popup_box pop_design"></div>
+	<div class="popup_box pop_design">
+		<button class="close">닫기</button>
+	</div>
 	<div class="popup_box2 pop_design"></div>
 	<div class="popup_box3 pop_design"></div>
 	<div class="popup_box4 pop_design"></div>
 	<script>
+
+    function close(){
+    	$('.blind').fadeOut(function(){
+    		$(this).remove();
+    	})
+    	$('.pop_design').fadeOut();
+    }
 	function blind(){
 		 $('body').append("<div class='blind'></div>");
 	  	 $('.blind').fadeTo(1000,0.3);
@@ -44,7 +53,9 @@
 		})
 		select.fadeIn(2000)
 	}
-
+		$('.close').click(function(){
+			close();
+		})
 	  $('.pop1').click(function(){
 	  	
 	  	 popup($('.popup_box'));
