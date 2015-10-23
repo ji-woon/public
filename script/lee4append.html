@@ -43,7 +43,8 @@
 				.first()
 				.fadeOut().next().css('display','none').fadeIn(function(){$(this).siblings().remove();
 					check = true;
-				})
+
+				}).parent().fadeIn(bgcolor[idx])
 			}
 		})
 	})
