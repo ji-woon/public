@@ -20,7 +20,7 @@
 	<button class="pop3">팝업</button>
 	<button class="pop4">팝업</button>
 	<div class="popup_box pop_design">
-		<button class="close">닫기</button>
+		
 	</div>
 	<div class="popup_box2 pop_design"></div>
 	<div class="popup_box3 pop_design"></div>
@@ -43,6 +43,7 @@
 		 blind();
 		var popW = select.width()
 		var popH = select.height();
+		select.append('<button class="close">닫기</button>')
 		select.css({
 			'position':'absolute',
 			'left':'50%',
@@ -53,9 +54,13 @@
 		})
 		select.fadeIn(2000)
 	}
-		$('.close').click(function(){
-			close();
+
+		$('.pop_design').on('click','.close',function(){
+						close();
+						$('.close').remove();
 		})
+		
+
 	  $('.pop1').click(function(){
 	  	
 	  	 popup($('.popup_box'));
