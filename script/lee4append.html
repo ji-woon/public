@@ -32,9 +32,7 @@
 			.append('<img src="'+imgUrl[idx]+'"alt=""/>')
 			.children('img')
 			.first()
-			.fadeOut(function(){
-				$(this).remove()
-			}).next().css('display','none').fadeIn()
+			.fadeOut().next().css('display','none').fadeIn(function(){$(this).siblings().remove()})
 		})
 	})
 
