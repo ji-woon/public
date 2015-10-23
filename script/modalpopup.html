@@ -6,13 +6,23 @@
 	<script type="text/javascript" src="../js/jquery.js"></script>
 	<style>
 	.blind{position:absolute; top:0;left:0;right:0;bottom:0; background-color:#000; display:none;}
-	.popup_box{width:500px; height: 500px; display:none; background-color:#FFF; border:1px solid #F00; position:absolute; z-index:1; left:50%; margin-left:-250px; }
+	.pop_design{display:none; background-color:#FFF; border:1px solid #F00;}
+	.popup_box{width:500px; height: 500px;  }
+	.popup_box2{width:450px; height: 600px;   }
+	.popup_box3{width:650px; height: 650px;    }
+	.popup_box4{width:550px; height: 700px;    }
 	</style>
 	
 </head>
 <body>
 	<button class="pop1">팝업</button>
-	<div class="popup_box"></div>
+	<button class="pop2">팝업</button>
+	<button class="pop3">팝업</button>
+	<button class="pop4">팝업</button>
+	<div class="popup_box pop_design"></div>
+	<div class="popup_box2 pop_design"></div>
+	<div class="popup_box3 pop_design"></div>
+	<div class="popup_box4 pop_design"></div>
 	<script>
 	function blind(){
 		 $('body').append("<div class='blind'></div>");
@@ -20,12 +30,39 @@
 	}
 
 	function popup(select){
-		$('.popup_box').fadeIn()
+		// select.fadeIn()
+		 blind();
+		var popW = select.width()
+		var popH = select.height();
+		select.css({
+			'position':'absolute',
+			'left':'50%',
+			'top':'50%',
+			'marginTop':-popH/2,
+			'marginLeft':-popW/2,
+			'z-index':1
+		})
+		select.fadeIn(2000)
 	}
+
 	  $('.pop1').click(function(){
-	  	 blind();
-	  	 popup();
+	  	
+	  	 popup($('.popup_box'));
 	  })
+	   $('.pop2').click(function(){
+	  	
+	  	 popup($('.popup_box2'));
+	  })
+	    $('.pop3').click(function(){
+	  	
+	  	 popup($('.popup_box3'));
+	  })
+	     $('.pop4').click(function(){
+	  	
+	  	 popup($('.popup_box4'));
+	  })
+
+
 	</script>
 
 </body>
