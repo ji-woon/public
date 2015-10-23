@@ -37,12 +37,14 @@
 		  	if(check){ 
 				check =false;
 				var idx = $(this).index();
-				
+				$('.view .bg').css({'background-color':bgcolor[idx],'display':'none'}).fadeIn()
 				$('.view .bg')
 				.append('<img src="'+imgUrl[idx]+'"alt=""/>')
 				.children('img')
 				.first()
-				.fadeOut()
+				.fadeOut(function(){
+					$(this).slow()
+				})
 				.next().css('display','none').fadeIn(function(){
 					
 					$(this).siblings().remove();
