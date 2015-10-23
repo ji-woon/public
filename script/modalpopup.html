@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>모달팝업</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<style>
+	.blind{position:absolute; top:0;left:0;right:0;bottom:0; background-color:#000; display:none;}
+	.popup_box{width:500px; height: 500px; display:none; background-color:#FFF; border:1px solid #F00; position:absolute; z-index:1; left:50%; margin-left:-250px; }
+	</style>
+	
+</head>
+<body>
+	<button class="pop1">팝업</button>
+	<div class="popup_box"></div>
+	<script>
+	function blind(){
+		 $('body').append("<div class='blind'></div>");
+	  	 $('.blind').fadeTo(1000,0.3);
+	}
+
+	function popup(select){
+		$('.popup_box').fadeIn()
+	}
+	  $('.pop1').click(function(){
+	  	 blind();
+	  	 popup();
+	  })
+	</script>
+
+</body>
+</html>

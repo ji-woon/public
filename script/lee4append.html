@@ -8,7 +8,8 @@
 	*{margin:0; padding:0;}
 	li,ol,ul{list-style:none;}
 	.banner{border:1px solid #F00; position:relative; }
-	.view{background-color:#CFCFCD; height:430px; }
+	.view{}
+	.view .bg{background-color:#CFCFCD; height:430px;  }
 	.view img{position:absolute; left:50%; margin-left:-550px;}
 	.controll {text-align:center; width:100%; position:absolute; bottom:20px;}
 	.controll li{display:inline-block;}
@@ -37,15 +38,18 @@
 				check =false;
 				var idx = $(this).index();
 				
-				$('.view')
+				$('.view .bg')
 				.append('<img src="'+imgUrl[idx]+'"alt=""/>')
 				.children('img')
 				.first()
-				.fadeOut().next().css('display','none').fadeIn(function(){$(this).siblings().remove();
+				.fadeOut()
+				.next().css('display','none').fadeIn(function(){
+					
+					$(this).siblings().remove();
 					check = true;
 
-				}).parent().fadeIn(bgcolor[idx])
-			}
+				 })//parent().css('display','none').fadeIn(function(){$(this).css('background-color',bgcolor[idx])})
+			}  
 		})
 	})
 
@@ -53,7 +57,11 @@
 </head>
 <body>
 	<div class='banner'>
-		<div class="view"><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg" alt=""/> </div>
+
+		<div class="view">
+			<div class="bg"><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg" alt=""/></div>
+		</div> <!--view fade in -->
+		
 		<ul class="controll">
 			<li class="on">1</li>
 			<li>2</li>

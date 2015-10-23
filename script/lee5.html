@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+<script>
+
+$(document).ready(function(){
+    $('.banner li a').click(function(){
+
+        $(this).next('div').fadeIn().parent().siblings().children('div').fadeOut()
+
+
+        return false;
+    })
+})
+
+</script>
+<style>
+
+*{margin:0; padding:0;}
+ul{list-style: none;}
+.banner{border:1px #F00 solid; height:440px; position: relative; text-align:center;}
+.banner li{display:inline-block;}
+.banner li div{text-align: center;border:1px #F00 solid; position: absolute; width:100%; top:0; left:0; display:none;}
+.banner li:first-child div{display: block;}
+.banner li a{position: relative; z-index:1; color:#F00; font-size: 40px; top:350px}
+
+
+
+
+
+
+</style>
+
+</head>
+<body>
+
+    <div class="banner">
+    <ul>
+        <li>
+            <a href="">1</a>
+            <div><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg" alt=""></div>
+        </li>
+        <li>
+            <a href="">2</a>
+            <div><img src="http://www.leebyunghun.kr/html/images/main/add_img02.jpg" alt=""></div>
+        </li>
+        <li>
+            <a href="">3</a>
+            <div><img src="http://www.leebyunghun.kr/html/images/main/add_img03.jpg" alt=""></div>
+        </li>
+    </ul>
+
+    </div>
+
+
+
+</body>
+</html>
