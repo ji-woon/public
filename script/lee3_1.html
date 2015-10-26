@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script tyhpe="text/javascript" src="../js/jquery.js"></script>
+	<style>
+	*{padding:0; margin:0;}
+	li,ol,ul{list-style:none;}
+	.banner{border:1px solid #F00; height:440px;}
+	.view li{position:absolute; text-align:center; width:100%; display:none;}
+	.view li:nth-child(1){background-color:#CFCFCD; display:block;}
+	.view li:nth-child(2){background-color:#B8BAB9;}
+	.view li:nth-child(3){background-color:#061823;}
+	.controll {position:relative; text-align:center; top:90%;}
+    .controll li{display:inline-block;}
+    .controll li.on button{color:#F00;}
+
+	
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul class=view>
+			<li><img src="http://www.leebyunghun.kr/html/images/main/add_img01.jpg" alt=""></li>
+			<li><img src="http://www.leebyunghun.kr/html/images/main/add_img02.jpg" alt=""></li>
+			<li><img src="http://www.leebyunghun.kr/html/images/main/add_img03.jpg" alt=""></li>
+		</ul>
+		<ul class="controll">
+			<li class="on"><button>1</button></li>
+			<li><button>2</button></li>
+			<li><button>3</button></li>
+		</ul>
+	</div>
+ <script>
+ 	var idx = 0;
+ 	var inter = setInterval(intfn,3000)
+
+ 	function intfn(){
+ 		idx +=1;
+ 	}
+ 		console.log(idx)
+ 		if(idx == $('.controll li').size()){
+ 			
+ 			idx = 0;
+ 			fadeBn(idx);
+ 		}else{
+ 				fadeBn(idx)
+ 		} 
+ 			
+      
+ 	function fadeBn(index){
+ 		$('.view li').eq(index).fadeIn().siblings('li').fadeOut();
+ 		$('.controll li').eq(index).addClass('on').siblings().removeClass('on');
+ 	}
+
+
+ 	$('.controll li').click(function(){
+ 		 console.log($('.controll li').size())
+ 		idx =$(this).index()
+ 		fadeBn(idx)
+ 	})
+ </script>
+</body>
+</html>
