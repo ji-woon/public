@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/42Gtm4-Ax2U" frameborder="0" allowfullscreen></iframe>
+	<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/42Gtm4-Ax2U?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+ -->
+	<ul class="movlist">
+		<li><img src="../image/add_img01.jpg" alt="">
+			<input type="hidden" value="0rtV5esQT6I">
+		</li>
+		<li><img src="../image/add_img02.jpg" alt="">
+			<input type="hidden" value="42Gtm4-Ax2U">
+		</li>
+		<li><img src="../image/add_img03.jpg" alt="">
+			<input type="hidden" value="p44movfkM2s">
+		</li>
+	</ul>
+
+	<script>
+
+	 	var movUrl;
+	 	var path ='https://www.youtube.com/embed/'+movUrl+'?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen'
+		$('.movlist li').click(function(){
+			
+			var movURl=$(this).children('input').val()
+			// console.log($(this).children('input').val())
+			$('iframe').attr('src',path)
+		// var movUrl;
+  		// var path = "https://www.youtube.com/embed/"+movUrl+"?rel=0&amp;controls=0&amp;showinfo=0"
+  		// $('.movlist li').click(function(){
+  		// movUrl = $(this).children('input').val()
+  		// $('iframe').attr('src',path )
+
+		})
+	</script>
+</body>
+</html>
