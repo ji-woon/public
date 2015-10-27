@@ -1,51 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script type="text/javascript" src="../js/jquery.js"></script>
-	 <style>
-	 	body{background:#F00}
-		.time span {display:inline-block; width:41px; height:57px; overflow: hiddne; background-image: url(http://dept.galleria.co.kr/web/img/main/txt-num.png); font-size:0}
-    </style>
-	 </style>
 </head>
 <body>	
-
-	<div class="time"></div>
 	<script>
 
 		var dayArr=['일','월','화','수','목','금','토','일']
-					
+		
+
+		// console.log(years)
+
+		
+			setInterval(function(){
 		var time = new Date();
-		var Hours,min,sec;		
-	
+		var msec = time.getMilliseconds();
 
-		 Hours=time.getHours();
-		 min=time.getMinutes();
-		 sec=time.getSeconds();
 
-		  var timeInfo = "";
-		  
-		 timeInfo +=Hours;
-		 timeInfo +=min;
-		 timeInfo +=sec;
+		// console.log(day[time.getDay()]); 
+		// console.log(time.getDay());   //2   
 
-		
-		
+		// console.log(time.getDate())
 
-		var timeContainer = [];
-		for(i=0; i<timeInfo.length;i++){
-			var subStr= timeInfo.substring(i,i+1)
-			// console.log(subStr)
-			timeContainer.push(subStr)
-			console.log(timeContainer)
-
-			$('.time').append("<span>"+timeContainer[i]+"</span>")
-			$('.time').children('span').eq(i).css({'background-position':})
-		}
-	
+		var years=time.getYear()+1900;  //년도는 1900을 더해준다. 
+		var mon=time.getMonth()+1;  //달은 +1로 0부터 시작하기 때문에.. 
+		var date=time.getDate();
+		var day=time.getDay();
+		var Hours=time.getHours();
+		var min=time.getMinutes();
+		var sec=time.getSeconds();
+		$('body').html(years+'년'+mon+"월"+date+"일"+dayArr[day]+'요일'+Hours+'시'+min+'분'+sec+'초'+msec);
+		},1000)
 	
 	</script>
 </body>
