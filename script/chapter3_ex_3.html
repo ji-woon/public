@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<script>
+		var userName="박지운";
+		var ranData= Math.floor(Math.random()*31+1)    //일수
+		var first_data= ranData;
+
+		var text=["골드가된다","플레티넘이 된다","실버로 남는다","브론즈가된다"];
+		var ranData =Math.random()*text.length; 
+		var compleData=Math.floor(ranData);
+
+		var msg = userName+"은/는"+first_data;
+		document.write(msg+"일뒤에"+text[compleData])
+	</script>
+	
+</body>
+</html>

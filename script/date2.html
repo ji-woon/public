@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+
+
+        var dayArr =['일','월','화','수','목','금','토']
+
+        setInterval(time,1000)
+
+
+
+
+        function time(){
+
+        var time = new Date();
+        var day,Hours,min
+
+        Hours = time.getHours();
+        min = time.getMinutes();
+        sec = time.getSeconds();
+
+        var timeInfo = "";
+
+        timeInfo += Hours;
+        timeInfo += min;
+        timeInfo += sec;
+
+        var timeContainer = [];
+
+        $('.time span').remove()
+
+        for(i=0; i<timeInfo.length;i++){
+            var substr = timeInfo.substring(i,i+1);
+
+            timeContainer.push(substr)
+
+            var spot = Number(timeContainer[i])*100//애니메이션 거리 위에서 넘어가는 
+            console.log(spot)
+
+            $('.time').append('<span></span>')
+            $('.time').children('span').eq(i).animate({
+                'backgroundPositionY':'-'+spot+'px'
+                // 'background-position':'0'+'-'+spot+'px'
+            })
+
+        }
+
+
+    if(07 <= Number(Hours) && Number(Hours)<=17){
+        $('body').css('background','red')
+    }else{
+        $('body').css('background','blue')
+    }
+
+        }
+
+
+})
+
+    </script>
+    <style>
+    body{background-color: #00F;}
+     .time span {display:inline-block; width:41px; height:57px; overflow: hiddne; background-image: url(http://dept.galleria.co.kr/web/img/main/txt-num.png); font-size:0}
+    </style>
+
+</head>
+<body>
+    <div class="time">
+    </div>
+
+</body>
+</html>
