@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>	
+	<script>
+
+		var dayArr=['일','월','화','수','목','금','토','일']
+		
+
+		// console.log(years)
+
+		
+			setInterval(function(){
+		var time = new Date();
+		var msec = time.getMilliseconds();
+
+
+		// console.log(day[time.getDay()]); 
+		// console.log(time.getDay());   //2   
+
+		// console.log(time.getDate())
+
+		var years=time.getYear()+1900;  //년도는 1900을 더해준다. 
+		var mon=time.getMonth()+1;  //달은 +1로 0부터 시작하기 때문에.. 
+		var date=time.getDate();
+		var day=time.getDay();
+		var Hours=time.getHours();
+		var min=time.getMinutes();
+		var sec=time.getSeconds();
+		$('body').html(years+'년'+mon+"월"+date+"일"+dayArr[day]+'요일'+Hours+'시'+min+'분'+sec+'초'+msec);
+		},1000)
+	
+	</script>
+</body>
+</html>
