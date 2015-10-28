@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<style>
+		*{padding:0; margin:0;}
+		ul,li,ol{list-style:none;}
+	    body,html{height:100%;}
+	    #wrap{height:100%; width:100%;}
+	    #wrap section{border:1px solid #F00; height:100%; width:100%;background-size:cover; -webkit-background-size:cover;
+	        background-position:50% 50%;}
+
+	section.content1{background-image: url(http://www.ok-studios.de/fileadmin/templates/okstudios/images/home_bg.jpg);}
+    section.content2{background-image: url(http://www.ok-studios.de/fileadmin/templates/okstudios/images/design_bg.jpg);}
+    section.content3{background-image: url(http://www.ok-studios.de/fileadmin/templates/okstudios/images/technik_bg.jpg);}
+    section.content4{background-image: url(http://www.ok-studios.de/fileadmin/templates/okstudios/images/lab_bg.jpg);}
+    section.content5{background-image: url(http://www.ok-studios.de/fileadmin/templates/okstudios/images/about_bg.jpg);}
+	</style>
+
+</head>
+<body>
+		<div id="wrap">
+  		<section class="content1"></section>
+  		<section class="content2"></section>
+  		<section class="content3"></section>
+  		<section class="content4"></section>
+  		<section class="content5"></section>
+  	</div>	
+  			
+
+  	<script>
+  			//높이를 이용해서 만들어야 한다. 
+  			var spot=[];    //높이를 정하지 말고 만든 section에서 받자 
+  			var spotHeight = 0;  //총 높이.... 0으로 해서 초기화 .. 
+  	       $('#wrap>section').each(function(i,e){  //각각의 높이값을 
+  	       	    spot.push($(e).offset().top)  //section높이값을 집어넣자
+  	       	    $(e).css('top',spot[i])//각각의 높이값을 section에 분배해
+  	       	  
+  	       	  spotHeight += $(e).height(); //각각의 높이값을 더해서 총 높이 설정
+  	       	   console.log(spot[i])
+  	       }).css('position','fixed')
+  	       $('#wrap').height(spotHeight) //높이값 설정 
+  	       $(window).scroll(function(){
+  	       	     var sct=$(this).scrollTop();  //스크롤 바의 위부분 값을 설정..
+
+  	       	     $('#wrap>section').each(function(i,e){
+  	       	     	var tt = -1*sct+spot[i] //스크롤 바 윗위부분과 각부분의 높이를 -1로 내려주다  1-*sct 스크롤 내려주는 행위 내려간 만큼 올라온다spot[i] 부분이 
+  	       	     	//-1*sct로 내리면 spot[i]의 수치는 내려가므로 올라간다. 
+
+
+  	       	     	if(spot[i]<sct) tt *=0.5 //크롤 내린것이 고정된 값보다 크면 올라가는 속도가 반값으로 줄어든다. 
+
+  	       	     		$(e).css('top',tt) //여기에서 tt는 내려간 만큼 사진의 높이값을 빼주었기 때문에 올라간 높이값 .. 
+  	       	     })
+  	       })
+
+
+
+  	</script>	
+</body>
+</html>
