@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js" ></script>
+</head>
+<body>
+	<p class="avgnum"></P>
+	<input type="button" value="전원 점수 출력" class="ttable" />
+	<input type="button" value="학생 입력" class="addUser" />
+	<input type="button" value="자료 삭제" class="delete" />
+	<input type="button" value="평균값 출력" class="avgscore">
+	<div class="table"></div> 
+
+	<script>
+
+	  var scoreTable = {
+
+	  			userPeopleArr : [],
+	  			userScoreArr :[],
+
+	  			score:function(){
+	  				var userPeople = prompt("이름을 입력하세요 ");
+	  				var userScore = prompt("점수를 입력하세요");
+
+	  				this.userPeopleArr.push(userPeople);
+	  				this.userScoreArr.push(userScore);
+	  			},
+	  			avg:function(){
+	  					var sum= 0;
+	  				for(i in userScoreArr){
+	  					sum += userScoreArr[i]
+	  				}
+	  				return sum/userScoreArr.length;
+	  			}
+	  }
+
+	  $('.addUser').click(function(){
+	  scoreTable.score();	
+	  })
+	</script>
+</body>
+</html>

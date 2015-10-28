@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<style>
+body{background-color:#000;}
+ div{float:left; font-size:0;}
+ div span{border:1px solid #F00; font-size:12px; display:inline-block; width:41px; height:57px; background: url(http://dept.galleria.co.kr/web/img/main/txt-num.png) no-repeat;}
+</style>
+<body>
+	<div class="h">
+		<span>1</span>
+		<span>1</span>
+	</div>
+	<div class="m">
+		<span>1</span>
+		<span>1</span>
+	</div>
+	<div class="s">
+		<span>1</span>
+		<span>1</span>
+	</div>
+	<script>
+
+		var Ttime,Tdate,Tdat,Tyear,Thours,Tmin,Tsec;
+		var hou=[];
+		var min=[];
+		var sec=[];
+		setInterval(function(){
+
+			realTime()
+		},1000)
+
+		function realTime(){
+			time =new Date();
+			Thours=time.getHours()-12;
+			Tmin=time.getMinutes();
+			Tsec=time.getSeconds();
+
+		 	Thours = twoNum(Thours)
+		 	Tmin =	twoNum(Tmin)
+		 	Tsec = twoNum(Tsec)
+
+		 	imgTime(hou,Thours,$('.h>span'))
+		 	imgTime(min,Tmin,$('.m>span'))
+		 	imgTime(sec,Tsec,$('.s>span'))
+
+		}
+
+		function twoNum(tt){
+			if(tt<10){
+				return '0'+tt;
+			}else{
+				return tt;
+			}
+
+		}
+		function imgTime(arr,tnum,select){
+			arr=[];
+
+			for(i=0;i<String(tnum).length;i++){
+				arr.push(String(tnum).substring(i,i+1))
+					select.eq(i).animate({
+				backgroundPositionY:-(arr[i]*100)
+			
+		
+			})
+				}	
+		}
+	</script>
+</body>
+</html>

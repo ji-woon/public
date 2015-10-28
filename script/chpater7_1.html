@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>
+
+	<p class="avgnum"></p>
+	<input type="button" value="전원 점수 출력" class="ttable" />
+	<input type="button" value="학생 입력" class="addUser" />
+	<input type="button" value="자료 삭제" class="delete" />
+	<input type="button" value="평균값 출력" class="avgscore" />
+	<div class="table"></div>
+   <script>
+   	 var scoreTable = {
+
+   	 		userPeopleArr : [],
+   	 		userScoreArr : [],
+   	 	adduser:function(){
+
+   	 		var userName=prompt("학생 이름을 입력하세요");
+   	 		var userScore=prompt("점수를 입력하세요");
+
+   	 		this.userPeopleArr.push(userName);
+   	 		this.userScoreArr.push(userScore);
+   	 	},
+   	 	avg:function(){
+
+   	 		var avge = 0;
+   	 	 for(i in this.userPeopleArr){
+
+   	 	 	 avge += Number(this.userScoreArr[i])
+   	 	 }
+   	 	  return avge/this.userPeopleArr.length;
+
+   	 	},
+   	 	printTable:function(){
+		    		var tableTag = ""
+		    		tableTag += "<table>";
+		    		tableTag += "<tr>"
+		    		for( i in this.userPeopleArr){
+		    			tableTag += "<td>"+this.userPeopleArr[i]+"</td>"
+		    			
+		    		}
+		    		tableTag += "</tr>"
+		    		tableTag +="<tr>"
+		    		for(i in this.userScoreArr){
+		    			tableTag += "<td>"+this.userScoreArr[i]+"</td>"
+		    		}
+		    		tableTag +="</tr>"
+		    		tableTag += "</table>"; 
+
+		    	 $('.ttable').html(tableTag);
+   	 		}
+   	 	 }
+   	 $('.addUser').click(function(){
+   	 	scoreTable.adduser();
+   	 })
+   	 $('.avgscore').click(function(){
+   	 
+
+   	 	$('.avgnum').text("평균점수 : "+scoreTable.avg());
+   	 })
+   	 $('.delect').click(function(){
+   	 	scoreTable.userPeopleArr=[];
+   	 	scoreTable.userScoreArr=[];
+   	 })
+   	 $('.table').click(function(){
+   	 	scoreTable.printTable();
+   	 })
+
+   
+
+
+
+
+   </script>
+</body>
+</html>
