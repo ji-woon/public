@@ -8,7 +8,7 @@
 	*{padding:0; margin:0;}
 	ul,li,ol{list-style:none;}
 	html,body{height:100%;}
-	#wrap{height:100%;}
+	#wrap{height:3000px; width:100%;}
 	#wrap section{border:1px solid #F00; height:100%; width:100%; background-size:cover; /*background-attachment: fixed;*/ }
 
 	section.content1{background-image: url(http://www.ok-studios.de/fileadmin/templates/okstudios/images/home_bg.jpg);}
@@ -33,7 +33,11 @@
   	</div>	
 
   	<script>
-  		
+  	     var spot= [];
+  		$('#wrap>section').each(function(i,e){
+  			spot.push($(e).offset().top)
+  			$(e).css('top',spot[i])
+  		}).css('position','fixed')
   	</script>
 </body>
 </html>
