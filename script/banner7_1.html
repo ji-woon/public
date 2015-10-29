@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <title>Document</title>
+
+    <script>
+
+    $(document).ready(function(){
+        var idx = []; //초기값
+
+         $('.banner').each(function(i,e){
+            $(e).attr('date-role-num',i);
+            idx.push(0)
+         })
+
+          function movement(start,end,index,select){
+            select.find('li').eq(index)
+            .addClass('on')
+            .children('div').css({
+                'display':'block',
+                'left':start
+            }).animate({
+                'left':end
+            }).parent('li').siblings('li').removeClass('on')
+
+            // if(index == $('.banner li').size()){
+            //     idx = 0;
+            //     movement('100%','0',idx)
+            // }else if(index < 0){
+            //     idx = $('.banner li').size()-1;
+            //     movement('-100%','0',idx)
+            // }
+        }
+
+        $('.next').click(function(){
+            var $this = $(this).parents('.banner');
+            var n = $this.index()
+             movement('0','-100%',idx[n],$this); //현제보이는 이미지
+             idx[n]++
+             movement('100%','0',idx[n],$this); // 새로 보여질 이미지
+
+         
+
+         })
+
+         $('.prev').click(function(){
+            var $this = $(this).parents('.banner');
+            var n = $this.index()
+            movement('0','100%',idx[n],$this); //현제보이는 이미지
+            idx[n]--
+            movement('-100%','0',idx[n],$this); // 새로 보여질 이미지
+          
+             
+        })
+          $('.banner li a').click(function(){
+            //var hisidx = $('.banner li.on').index();
+            var tg = $(this).parents('.banner') //배너 클래스
+            var n = $(this).parents('.banner').index() //banner 클릭 숫자...
+            var sn = $(this).parent().index(); // 배너 아래의 li 숫자... 
+            
+                       //  console.log(idx);
+            var hisNum = idx[n]  // 클릭하기전 
+            idx[n] = sn  //클릭했을때 번호 
+
+            var realNum = idx[n]
+
+            if(hisNum < realNum ){
+                movement('0','-100',hisNum,tg);
+                movement('100%','0',realNum,tg);
+            }else if(hisNum>realNum){
+                movement('0','100%',hisNum,tg);
+                movement('-100%','0',realNum,tg);
+            }else{
+                return;
+            }
+
+
+            
+    })
+})
+    </script>
+
+    <style>
+
+    *{margin:0; padding:0;}
+    ul{list-style: none;}
+
+    .banner{width:700px; margin:0 auto; position:relative}
+    .banner ul{width: 600px;height: 338px; overflow:hidden; position:relative; text-align:center; margin: 0 auto;}
+    .banner ul li {display:inline-block;}
+    .banner ul li a{position:relative; z-index: 1;  font-size:20px; color:#FFF; top:300px}
+    .banner ul li:first-child div{display: block;}
+    .banner ul li div{position:absolute; left:0; top:0; display:none;}
+    .banner ul li.on a{color:#F00;}
+    .banner button{position: absolute; top: 50%;}
+    .banner button.next{right:0}
+    .banner button.prev{left:0}
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+
+        <button class="next">next</button>
+        <button class="prev">prev</button>
+
+        <ul>
+            <li class="on">
+                <a href="javascript:void(0)">1</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">2</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">3</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">4</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+        </ul>
+    </div>
+    <div class="banner">
+
+        <button class="next">next</button>
+        <button class="prev">prev</button>
+
+        <ul>
+            <li class="on">
+                <a href="javascript:void(0)">1</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">2</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">3</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">4</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">5</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">6</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+        </ul>
+    </div>
+    <div class="banner">
+
+        <button class="next">next</button>
+        <button class="prev">prev</button>
+
+        <ul>
+            <li class="on">
+                <a href="javascript:void(0)">1</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">2</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">3</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">4</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">5</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">6</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:void(0)">7</a>
+                <div><img src="../image/winner.png" alt=""></div>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+</body>
+</html>
