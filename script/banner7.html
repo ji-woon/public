@@ -15,100 +15,92 @@
 	.banner ul li div{position:absolute;left:0;top:0;display:none;}
 	.banner ul li.on a{color:#F00;}
 	</style>
+ 	
 </head>
 <body>
-	<div class="banner">
+	
+ 	<script>
+ 	var bannerData = {
+ 			   infos:[{
+ 			   	bannerName:"첫번째 banner",
+ 		
+ 				url:["../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png"
+ 					],
 
-        <button class="next">next</button>
-        <button class="prev">prev</button>
+				alt:["이미지1",
+					 "이미지1",
+					 "이미지1",
+					 "이미지1"
+					],
+					link:[
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com"
+					] 					
+ 				}
 
-        <ul>
-            <li class="on">
-                <a href="javascript:void(0)">1</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">2</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">3</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">4</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-        </ul>
-    </div>
-    <div class="banner">
+				bannerName:"두번째 banner",
+ 		
+ 				url:["../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png"
+ 					],
 
-        <button class="next">next</button>
-        <button class="prev">prev</button>
+				alt:["이미지1",
+					 "이미지1",
+					 "이미지1",
+					 "이미지1"
+					],
+					link:[
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com"
+					] 					
+ 				}
 
-        <ul>
-            <li class="on">
-                <a href="javascript:void(0)">1</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">2</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">3</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">4</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">5</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">6</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-        </ul>
-    </div>
-    <div class="banner">
+ 				bannerName:"세번째 banner",
+ 		
+ 				url:["../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png"
+ 					],
 
-        <button class="next">next</button>
-        <button class="prev">prev</button>
+				alt:["이미지1",
+					 "이미지1",
+					 "이미지1",
+					 "이미지1"
+					],
+					link:[
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com"
+					] 					
+ 				}]
+ 			}
+      $.each(bannerData.infos,function(i,e){
 
-        <ul>
-            <li class="on">
-                <a href="javascript:void(0)">1</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">2</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">3</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">4</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">5</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">6</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-            <li>
-                <a href="javascript:void(0)">7</a>
-                <div><img src="../image/winner.png" alt=""></div>
-            </li>
-        </ul>
-    </div>
+      	var html=''
+      	html += '<div class="banner">'
+      	html += '<button class="next">next</button>'
+      	html += '<button class="prev">prev</button>'
+      	html += '<ul></ul>'
+      	html +='</div>'
 
+      	$('body').append(html)
+      	$.each(e.url,function(k,el){
+      		$('.banner').eq(i).children('ul')
+      		.append('<li><img src="'+el+'"</li>')
+
+      	})
+      })
+ 	</script>
 </body>
 </html>

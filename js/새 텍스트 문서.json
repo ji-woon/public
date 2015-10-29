@@ -1,0 +1,65 @@
+var bannerData = {
+ 			   infos:[{
+ 			   	bannerName:"첫번째 banner",
+ 		
+ 				url:["../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png"
+ 					],
+
+				alt:["이미지1",
+					 "이미지1",
+					 "이미지1",
+					 "이미지1"
+					],
+					link:[
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com"
+					] 					
+ 				},{
+
+				bannerName:"두번째 banner",
+ 		
+ 				url:["../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png"
+ 					],
+
+				alt:["이미지1",
+					 "이미지1",
+					 "이미지1",
+					 "이미지1"
+					],
+					link:[
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com"
+					] 					
+ 				},{
+
+ 				bannerName:"세번째 banner",
+ 		
+ 				url:["../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png",
+ 					"../image/winner.png"
+ 					],
+
+				alt:["이미지1",
+					 "이미지1",
+					 "이미지1",
+					 "이미지1"
+					],
+					link:[
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com",
+					"http://www.naver.com"
+					] 					
+ 				}]
+ 			}
