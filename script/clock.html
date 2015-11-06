@@ -54,7 +54,7 @@
 		}
 
 		function imgTime(arr,tnum,select){
-			arr=[]
+			arr=[]   //비우는 이유는 setInterval 사용할때 비워주기 위해서 .. 
 			for(i=0;i < String(tnum).length; i++){
 				arr.push(String(tnum).substring(i,i+1))
 select.eq(i).animate({

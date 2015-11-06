@@ -1,0 +1,16 @@
+배너 갯수 each 활용
+
+초기 선택 방법 
+
+갯수를 센다 ... banner  each를 돌릴수 있다. 
+
+$('.banner').each(function(i,e){
+  $(e).attr('id','number'+i)  //아이디는 숫자가 먼저 오면 안된다. 
+$(e).attr('id').replace('number',' ')   //지울때 
+})   -- 각배너에 고유 아이디 부여 
+
+$(e).attr('data-role-num',i)
+
+
+idx[n] //클릭하기 전
+sn//현재 누른 번호 
